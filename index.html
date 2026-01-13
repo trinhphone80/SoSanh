@@ -7,47 +7,86 @@
     <title>Báo cáo Đối chiếu: AutoNuoi vs MinSoftware</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                red: '#ef4444',
+                yellow: '#f59e0b',
+                green: '#10b981',
+                orange: '#f97316',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <style>
         body { 
           font-family: 'Plus Jakarta Sans', sans-serif; 
           scroll-behavior: smooth;
-          background-color: #020617; /* Slate 950 base */
-          overflow-x: hidden;
+          transition: background-color 0.3s ease, color 0.3s ease;
         }
         
-        /* Hiệu ứng Glow cho các tông màu chủ đạo */
-        .glow-red { filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.5)); }
-        .glow-green { filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5)); }
-        .glow-gold { filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.5)); }
-        .glow-orange { filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.5)); }
+        .dark body {
+          background-color: #020617;
+        }
+
+        .light body {
+          background-color: #f8fafc;
+        }
+
+        /* Glow Effects */
+        .glow-red { filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.4)); }
+        .glow-green { filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4)); }
+        .glow-gold { filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4)); }
+        .glow-orange { filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.4)); }
 
         .hover-scale {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .hover-scale:hover {
             transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .dark .hover-scale:hover {
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
-
-        /* Giới hạn kích thước chữ tiêu đề cực đại để không vỡ layout */
         .title-responsive {
-            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-size: clamp(2rem, 7vw, 5rem);
             line-height: 1.1;
         }
-    </style>
 
+        .card-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .card-glass {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
 </head>
-<body class="text-slate-100 selection:bg-orange-500 selection:text-white">
+<body class="text-slate-900 dark:text-slate-100 selection:bg-orange-500 selection:text-white">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

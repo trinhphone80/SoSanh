@@ -56,3 +56,18 @@ export interface InvestmentRow {
   total: string;
   isImportant?: boolean;
 }
+
+export interface VideoItem {
+  id: string;
+  title: string;
+  thumbnail: string;
+  duration: string;
+  description: string;
+}
+
+export interface GuideArticle {
+  title: string;
+  summary: string;
+  link: string;
+  tag: string;
+}
